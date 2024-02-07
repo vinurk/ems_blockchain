@@ -1,0 +1,23 @@
+{
+  "name": "ems_blockchain",
+  "version": "1.0.0",
+  "description": "Evidence management system on blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vinayak R Krishnan",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.5"
+  },
+  "dependencies": {
+    "18": "^0.0.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.1",
+    "ethers": "^5.7.2",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.3"
+  }
+}
