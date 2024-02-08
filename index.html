@@ -1,97 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evidence Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="main.js"></script>
-    <script src="https://cdn.ethers.io/lib/ethers-5.7.1.umd.min.js"
-        type="application/javascript"></script>
+    <script
+      src="https://cdn.ethers.io/lib/ethers-5.7.1.umd.min.js"
+      type="application/javascript"
+    ></script>
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.10.0/ethers.umd.min.js"
+      integrity="sha512-O+pv4/QL+b3vRcPZ64zjoh+t6yhvo8L/OgQQuQIUI9GbMC6VwsujvLiUV+aIxlPLSo+SLVgf8orHcb15S5ieiQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> -->
     <!-- <script src="index.js"></script> -->
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <h2>Evidence Management System</h2>
+      <h2>Evidence Management System</h2>
     </div>
-    
-<button id="add-button" class="button add-button" onclick="addEvidence()">Add Evidence</button>
-<button id="update-button" class="button update-button" onclick="updateEvidence()">Update Evidence</button>
-<button id="connect-button" class="button connect-button" onclick="connectMetaMask()">Connect MetaMask</button>
-<button id="getAll-button" class="button connect-button" onclick="getAllEvidences()">Get All Evidence</button>
 
-<div id="metamask_notification"></div>
+    <button id="add-button" class="button add-button" onclick="addEvidence()">
+      Add Evidence
+    </button>
+    <button
+      id="update-button"
+      class="button update-button"
+      onclick="updateEvidence()"
+    >
+      Update Evidence
+    </button>
+    <button
+      id="connect-button"
+      class="button connect-button"
+      onclick="connectMetaMask()"
+    >
+      Connect MetaMask
+    </button>
+    <button
+      id="getAll-button"
+      class="button connect-button"
+      onclick="getAllEvidences()"
+    >
+      Get All Evidence
+    </button>
 
+    <div id="metamask_notification"></div>
 
-<div id="addEvidenceFields" class="hidden">
-    <h3>Add Evidence</h3>
-    <form method="POST" action="/addEvidence" enctype="multipart/form-data">
-        <label for="caseName">Case Name:</label><br>
-        <input type="text" id="caseName" name="caseName"><br>
-        
-        <label for="caseType">Case Type:</label><br>
-        <input type="text" id="caseType" name="caseType"><br>
-        
-        <label for="date">Date:</label><br>
-        <input type="date" id="date" name="date"><br>
-        
-        <label for="time">Time:</label><br>
-        <input type="time" id="time" name="time"><br>
-        
-        <label for="location">Location:</label><br>
-        <input type="text" id="location" name="location"><br>
-        
-        <label for="caseDescription">Case Description:</label><br>
-        <textarea id="caseDescription" name="caseDescription"></textarea><br>
-        
-        <label for="evidence">Evidence:</label><br>
-        <input type="text" id="evidence" name="evidence"><br>
-        
-        <label for="evidenceDescription">Evidence Description:</label><br>
-        <textarea id="evidenceDescription" name="evidenceDescription"></textarea><br>
-        
-        <label for="evidenceCategory">Evidence Category:</label><br>
-        <input type="text" id="evidenceCategory" name="evidenceCategory"><br><br>
-        
+    <div id="addEvidenceFields" class="hidden">
+      <h3>Add Evidence</h3>
+      <form method="POST" action="/addEvidence" enctype="multipart/form-data">
+        <label for="caseName">Case Name:</label><br />
+        <input type="text" id="caseName" name="caseName" /><br />
+
+        <label for="caseType">Case Type:</label><br />
+        <input type="text" id="caseType" name="caseType" /><br />
+
+        <label for="date">Date:</label><br />
+        <input type="date" id="date" name="date" /><br />
+
+        <label for="time">Time:</label><br />
+        <input type="time" id="time" name="time" /><br />
+
+        <label for="location">Location:</label><br />
+        <input type="text" id="location" name="location" /><br />
+
+        <label for="caseDescription">Case Description:</label><br />
+        <textarea id="caseDescription" name="caseDescription"></textarea><br />
+
+        <label for="evidence">Evidence:</label><br />
+        <input type="text" id="evidence" name="evidence" /><br />
+
+        <label for="evidenceDescription">Evidence Description:</label><br />
+        <textarea id="evidenceDescription" name="evidenceDescription"></textarea
+        ><br />
+
+        <label for="evidenceCategory">Evidence Category:</label><br />
+        <input
+          type="text"
+          id="evidenceCategory"
+          name="evidenceCategory"
+        /><br /><br />
+
         <button type="submit">Submit</button>
-    </form>
-</div>
+      </form>
+    </div>
 
-<div id="updateEvidenceFields" class="hidden">
-    <h3>Update Evidence</h3>
-    <form>
-        <label for="caseNumber">Case Number:</label><br>
-        <input type="text" id="caseNumber" name="caseNumber"><br>
-        
-        <label for="evidence">Evidence:</label><br>
-        <input type="text" id="evidence" name="evidence"><br>
-        
-        <label for="evidenceDescription">Evidence Description:</label><br>
-        <textarea id="evidenceDescription" name="evidenceDescription"></textarea><br>
-        
-        <label for="evidenceCategory">Evidence Category:</label><br>
-        <input type="text" id="evidenceCategory" name="evidenceCategory"><br><br>
-        
+    <div id="updateEvidenceFields" class="hidden">
+      <h3>Update Evidence</h3>
+      <form>
+        <label for="caseNumber">Case Number:</label><br />
+        <input type="text" id="caseNumber" name="caseNumber" /><br />
+
+        <label for="evidence">Evidence:</label><br />
+        <input type="text" id="evidence" name="evidence" /><br />
+
+        <label for="evidenceDescription">Evidence Description:</label><br />
+        <textarea id="evidenceDescription" name="evidenceDescription"></textarea
+        ><br />
+
+        <label for="evidenceCategory">Evidence Category:</label><br />
+        <input
+          type="text"
+          id="evidenceCategory"
+          name="evidenceCategory"
+        /><br /><br />
+
         <button type="submit">Submit</button>
-    </form>
-</div>
+      </form>
+    </div>
 
-
-
-
-<script>
-    function addEvidence() {
+    <script>
+      function addEvidence() {
         var addEvidenceDiv = document.getElementById("addEvidenceFields");
         addEvidenceDiv.classList.remove("hidden");
-    }
+      }
 
-    function updateEvidence() {
+      function updateEvidence() {
         var updateEvidenceDiv = document.getElementById("updateEvidenceFields");
         updateEvidenceDiv.classList.remove("hidden");
-    }
-
-</script>
-
-</body>
+      }
+    </script>
+  </body>
 </html>
